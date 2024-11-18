@@ -16,7 +16,7 @@ import TaskListFilterPanel from '@/features/task/components/task-list-filter-pan
 
 export default function Home() {
   const { status, query } = useTaskFilters()
-  const { data: tasks = [] } = useTasksQuery({ status, query })
+  const tasksQuery = useTasksQuery({ status, query })
   const { mutateAsync: createTask, isPending: isCreatingTask } = useCreateTaskMutation()
   const { mutate: updateTask } = useUpdateTaskMutation()
   const { mutate: deleteTask } = useDeleteTaskMutation()
@@ -57,12 +57,26 @@ export default function Home() {
         <AddTaskForm onAdd={handleAddTask} isCreatingTask={isCreatingTask} />
       </div>
       <TaskListFilterPanel />
-      <TaskList
-        tasks={tasks}
-        onEdit={handleEditTask}
-        onDelete={handleDeleteTask}
-        onStatusChange={handleStatusChange}
-      />
+      {tasksQuery.isSuccess && (
+        <TaskList
+          tasks={tasksQuery.data}
+          onEdit={handleEditTask}
+          onDelete={handleDeleteTask}
+          onStatusChange={handleStatusChange}
+        />
+      )}
+
+      {tasksQuery.isPending && (
+        <div className='flex justify-center'>
+          <div className='h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent'></div>
+        </div>
+      )}
+
+      {tasksQuery.isError && (
+        <div className='text-center text-destructive'>
+          <p>Error loading tasks. Please try again later.</p>
+        </div>
+      )}
     </div>
   )
 }
