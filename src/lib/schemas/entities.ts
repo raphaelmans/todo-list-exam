@@ -3,7 +3,8 @@ import { z } from 'zod'
 const taskStatuses = ['todo', 'in_progress', 'completed'] as const
 const taskStatusSchema = z.enum(taskStatuses)
 
-export const todoItemSchema = z.object({
+export type TaskStatus = z.infer<typeof taskStatusSchema>
+export const Task = z.object({
   id: z.string(),
   title: z.string(),
   description: z.string(),
@@ -14,4 +15,4 @@ export const todoItemSchema = z.object({
   deletedAt: z.date().optional(),
 })
 
-export type TodoItem = z.infer<typeof todoItemSchema>
+export type Task = z.infer<typeof Task>
