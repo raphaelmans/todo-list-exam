@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Task Management Application
+
+A Next.js-based task management application built with modern React practices and TypeScript.
+
+## Technical Stack
+
+- **Framework**: React v19
+- **Meta Framework**: Next.js v15 (App Router)
+- **Language**: TypeScript
+- **State Management**: 
+  - Zustand (used as a local database for this test/exam purpose)
+  - React Query (data fetching/caching)
+  - URL State (for filters)
+- **Styling**: Tailwind CSS
+- **Testing**: Jest + React Testing Library
+- **Form Handling**: React Hook Form + Zod
+- **UI Components**: Radix UI + shadcn/ui
+
+## Key Features
+
+- Task CRUD operations
+- Task filtering and search
+- Task status management
+- Due date tracking
+- Responsive design
+- URL-persisted filters
 
 ## Getting Started
 
-First, run the development server:
-
+1. **Install Dependencies**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+```
+
+2. **Run Development Server**
+```bash
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Architecture Decisions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. State Management
+- **Zustand**: Used as a local database for this test/exam purpose instead of a real backend
+  - Provides simple and efficient state management
+  - Easy to replace with real API calls later
+- **React Query**: Handles data fetching and caching
+- **URL State**: Maintains filter state in URL for shareable links
+
+### 2. Project Structure
+```
+src/
+├── features/          # Feature modules
+│   └── task/         # Task management feature
+│       ├── components/  # Task-specific components
+│       ├── hooks.ts    # Custom hooks
+│       ├── schemas.ts  # Type definitions
+│       └── stores.ts   # State management
+├── lib/              # Core utilities
+│   ├── schemas/      # Shared schemas
+│   └── services/     # Business logic
+└── components/       # Shared components
+    └── ui/           # UI component library
+```
+
+### 3. Type Safety
+- Zod for runtime validation
+- TypeScript for static typing
+- Strict type checking enabled
+
+### 4. Performance Optimizations
+- Component memoization
+- React Query caching
+- Virtualized lists for large datasets
+
+## Testing
+
+Run the test suite:
+
+```bash
+pnpm test
+```
+
+Tests cover:
+- Business logic
+- Component rendering
+- User interactions
+- Edge cases
+
+## Development Notes
+
+- Uses feature-based architecture for scalability
+- Implements strict TypeScript for type safety
+- Follows React best practices and hooks patterns
+- Uses Zustand as a mock database (can be replaced with real API)
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Zustand Documentation](https://github.com/pmndrs/zustand)
+- [React Query Documentation](https://tanstack.com/query/latest)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The application can be deployed on Vercel or any other Next.js-compatible hosting platform.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
