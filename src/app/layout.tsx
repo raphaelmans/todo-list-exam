@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
+import AppQueryProvider from '@/common/providers/app-query-provider'
+import TaskListProvider from '@/common/providers/task-list-providers'
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -25,7 +28,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <AppQueryProvider>
+          <TaskListProvider>
+            <NuqsAdapter>{children}</NuqsAdapter>
+          </TaskListProvider>
+        </AppQueryProvider>
+      </body>
     </html>
   )
 }

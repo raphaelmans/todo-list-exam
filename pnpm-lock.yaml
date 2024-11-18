@@ -8,6 +8,9 @@ dependencies:
   '@hookform/resolvers':
     specifier: ^3.9.1
     version: 3.9.1(react-hook-form@7.53.2)
+  '@lukemorales/query-key-factory':
+    specifier: ^1.3.4
+    version: 1.3.4(@tanstack/query-core@5.60.5)(@tanstack/react-query@5.60.5)
   '@radix-ui/react-accordion':
     specifier: ^1.2.1
     version: 1.2.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@19.0.0-rc-5c56b873-20241107)(react@19.0.0-rc-5c56b873-20241107)
@@ -92,6 +95,9 @@ dependencies:
   '@tanstack/react-query':
     specifier: ^5.60.5
     version: 5.60.5(react@19.0.0-rc-5c56b873-20241107)
+  '@types/react-virtualized':
+    specifier: ^9.21.30
+    version: 9.21.30
   axios:
     specifier: ^1.7.7
     version: 1.7.7
@@ -107,6 +113,9 @@ dependencies:
   date-fns:
     specifier: ^4.1.0
     version: 4.1.0
+  debounce:
+    specifier: ^2.2.0
+    version: 2.2.0
   embla-carousel-react:
     specifier: ^8.4.0
     version: 8.4.0(react@19.0.0-rc-5c56b873-20241107)
@@ -140,6 +149,9 @@ dependencies:
   react-resizable-panels:
     specifier: ^2.1.7
     version: 2.1.7(react-dom@19.0.0-rc-5c56b873-20241107)(react@19.0.0-rc-5c56b873-20241107)
+  react-virtualized:
+    specifier: ^9.22.5
+    version: 9.22.5(react-dom@19.0.0-rc-5c56b873-20241107)(react@19.0.0-rc-5c56b873-20241107)
   recharts:
     specifier: ^2.13.3
     version: 2.13.3(react-dom@19.0.0-rc-5c56b873-20241107)(react@19.0.0-rc-5c56b873-20241107)
@@ -152,6 +164,12 @@ dependencies:
   tailwindcss-animate:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.4.14)
+  use-sync-external-store:
+    specifier: ^1.2.2
+    version: 1.2.2(react@19.0.0-rc-5c56b873-20241107)
+  uuid:
+    specifier: ^11.0.3
+    version: 11.0.3
   vaul:
     specifier: ^1.1.1
     version: 1.1.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@19.0.0-rc-5c56b873-20241107)(react@19.0.0-rc-5c56b873-20241107)
@@ -160,7 +178,7 @@ dependencies:
     version: 3.23.8
   zustand:
     specifier: ^5.0.1
-    version: 5.0.1(@types/react@18.3.12)(react@19.0.0-rc-5c56b873-20241107)
+    version: 5.0.1(@types/react@18.3.12)(react@19.0.0-rc-5c56b873-20241107)(use-sync-external-store@1.2.2)
 
 devDependencies:
   '@types/node':
@@ -580,6 +598,17 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
+
+  /@lukemorales/query-key-factory@1.3.4(@tanstack/query-core@5.60.5)(@tanstack/react-query@5.60.5):
+    resolution: {integrity: sha512-A3frRDdkmaNNQi6mxIshsDk4chRXWoXa05US8fBo4kci/H+lVmujS6QrwQLLGIkNIRFGjMqp2uKjC4XsLdydRw==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      '@tanstack/query-core': '>= 4.0.0'
+      '@tanstack/react-query': '>= 4.0.0'
+    dependencies:
+      '@tanstack/query-core': 5.60.5
+      '@tanstack/react-query': 5.60.5(react@19.0.0-rc-5c56b873-20241107)
+    dev: false
 
   /@next/env@15.0.3:
     resolution: {integrity: sha512-t9Xy32pjNOvVn2AS+Utt6VmyrshbpfUMhIjFO60gI58deSo/KgLOp31XZ4O+kY/Is8WAGYwA5gR7kOb1eORDBA==}
@@ -2252,6 +2281,13 @@ packages:
     dependencies:
       '@types/react': 18.3.12
 
+  /@types/react-virtualized@9.21.30:
+    resolution: {integrity: sha512-4l2TFLQ8BCjNDQlvH85tU6gctuZoEdgYzENQyZHpgTHU7hoLzYgPSOALMAeA58LOWua8AzC6wBivPj1lfl6JgQ==}
+    dependencies:
+      '@types/prop-types': 15.7.13
+      '@types/react': 18.3.12
+    dev: false
+
   /@types/react@18.3.12:
     resolution: {integrity: sha512-D2wOSq/d6Agt28q7rSI3jhU7G6aiuzljDGZ2hTZHIkrTLUI+AF3WMeKkEZ9nN2fkBAlcktT6vcZjDFiIhMYEQw==}
     dependencies:
@@ -2693,6 +2729,11 @@ packages:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
     dev: false
 
+  /clsx@1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
+
   /clsx@2.0.0:
     resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
     engines: {node: '>=6'}
@@ -2891,6 +2932,11 @@ packages:
 
   /date-fns@4.1.0:
     resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
+    dev: false
+
+  /debounce@2.2.0:
+    resolution: {integrity: sha512-Xks6RUDLZFdz8LIdR6q0MTH44k7FikOmnh5xkSjMig6ch45afc8sjTjRQf3P6ax8dMgcQrYO/AR2RGWURrruqw==}
+    engines: {node: '>=18'}
     dev: false
 
   /debug@3.2.7:
@@ -4727,6 +4773,10 @@ packages:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
     dev: false
 
+  /react-lifecycles-compat@3.0.4:
+    resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
+    dev: false
+
   /react-remove-scroll-bar@2.3.6(@types/react@18.3.12)(react@19.0.0-rc-5c56b873-20241107):
     resolution: {integrity: sha512-DtSYaao4mBmX+HDo5YWYdBWQwYIQQshUV/dVxFxK+KM26Wjwp1gZ6rv6OC3oujI6Bfu6Xyg3TwK533AQutsn/g==}
     engines: {node: '>=10'}
@@ -4833,6 +4883,22 @@ packages:
       prop-types: 15.8.1
       react: 19.0.0-rc-5c56b873-20241107
       react-dom: 19.0.0-rc-5c56b873-20241107(react@19.0.0-rc-5c56b873-20241107)
+    dev: false
+
+  /react-virtualized@9.22.5(react-dom@19.0.0-rc-5c56b873-20241107)(react@19.0.0-rc-5c56b873-20241107):
+    resolution: {integrity: sha512-YqQMRzlVANBv1L/7r63OHa2b0ZsAaDp1UhVNEdUaXI8A5u6hTpA5NYtUueLH2rFuY/27mTGIBl7ZhqFKzw18YQ==}
+    peerDependencies:
+      react: ^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0
+      react-dom: ^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.26.0
+      clsx: 1.2.1
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 19.0.0-rc-5c56b873-20241107
+      react-dom: 19.0.0-rc-5c56b873-20241107(react@19.0.0-rc-5c56b873-20241107)
+      react-lifecycles-compat: 3.0.4
     dev: false
 
   /react@19.0.0-rc-5c56b873-20241107:
@@ -5473,8 +5539,21 @@ packages:
       tslib: 2.8.1
     dev: false
 
+  /use-sync-external-store@1.2.2(react@19.0.0-rc-5c56b873-20241107):
+    resolution: {integrity: sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 19.0.0-rc-5c56b873-20241107
+    dev: false
+
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  /uuid@11.0.3:
+    resolution: {integrity: sha512-d0z310fCWv5dJwnX1Y/MncBAqGMKEzlBb1AOf7z9K8ALnd0utBX/msg/fA0+sbyN1ihbMsLhrBlnl1ak7Wa0rg==}
+    hasBin: true
+    dev: false
 
   /vaul@1.1.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@19.0.0-rc-5c56b873-20241107)(react@19.0.0-rc-5c56b873-20241107):
     resolution: {integrity: sha512-+ejzF6ffQKPcfgS7uOrGn017g39F8SO4yLPXbBhpC7a0H+oPqPna8f1BUfXaz8eU4+pxbQcmjxW+jWBSbxjaFg==}
@@ -5615,7 +5694,7 @@ packages:
     resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
     dev: false
 
-  /zustand@5.0.1(@types/react@18.3.12)(react@19.0.0-rc-5c56b873-20241107):
+  /zustand@5.0.1(@types/react@18.3.12)(react@19.0.0-rc-5c56b873-20241107)(use-sync-external-store@1.2.2):
     resolution: {integrity: sha512-pRET7Lao2z+n5R/HduXMio35TncTlSW68WsYBq2Lg1ASspsNGjpwLAsij3RpouyV6+kHMwwwzP0bZPD70/Jx/w==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
@@ -5635,4 +5714,5 @@ packages:
     dependencies:
       '@types/react': 18.3.12
       react: 19.0.0-rc-5c56b873-20241107
+      use-sync-external-store: 1.2.2(react@19.0.0-rc-5c56b873-20241107)
     dev: false
