@@ -30,7 +30,7 @@ const TaskItem = memo(
 
     return (
       <Card
-        className={cn('mb-4 transition-colors', {
+        className={cn('mb-4 h-[200px] transition-colors', {
           'border-2 border-destructive bg-destructive/5': isOverdue,
           'hover:border-destructive/50': isOverdue,
         })}

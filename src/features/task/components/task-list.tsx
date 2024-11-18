@@ -1,3 +1,4 @@
+import { List, AutoSizer } from 'react-virtualized'
 import { Task, TaskStatus } from '@/lib/schemas/entities'
 import TaskItem from '@/features/task/components/task-item'
 import { TaskInputForm } from '@/features/task/schemas'
@@ -10,17 +11,28 @@ type TaskListProps = {
 }
 
 const TaskList = ({ tasks, onEdit, onDelete, onStatusChange }: TaskListProps) => {
+  const rowRenderer = ({ index, key }: { index: number; key: string }) => {
+    const task = tasks[index]
+    return (
+      <div key={key}>
+        <TaskItem task={task} onEdit={onEdit} onDelete={onDelete} onStatusChange={onStatusChange} />
+      </div>
+    )
+  }
+
   return (
-    <div className='h-[calc(100vh-200px)]'>
-      {tasks.map(task => (
-        <TaskItem
-          key={task.id}
-          task={task}
-          onEdit={onEdit}
-          onDelete={onDelete}
-          onStatusChange={onStatusChange}
-        />
-      ))}
+    <div style={{ height: 'calc(100vh - 200px)', width: '100%' }}>
+      <AutoSizer>
+        {({ height, width }) => (
+          <List
+            height={height}
+            width={width}
+            rowCount={tasks.length}
+            rowHeight={200}
+            rowRenderer={rowRenderer}
+          />
+        )}
+      </AutoSizer>
     </div>
   )
 }
