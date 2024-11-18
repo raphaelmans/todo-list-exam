@@ -6,6 +6,7 @@ import { Task, TaskStatus } from '@/lib/schemas/entities'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { cn } from '@/lib/utils'
 import {
   Select,
   SelectContent,
@@ -13,6 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { taskService } from '@/lib/services/task-service'
 
 type TaskItemProps = {
   task: Task
@@ -24,21 +26,42 @@ type TaskItemProps = {
 
 const TaskItem = memo(
   ({ task, onEdit, onDelete, onStatusChange, isEditingTask }: TaskItemProps) => {
-    const isOverdue = task.dueDate && new Date() > new Date(task.dueDate)
+    const isOverdue = taskService.isTaskOverdue(task)
 
     return (
-      <Card className={`mb-4 ${isOverdue ? 'border-red-500' : ''}`}>
+      <Card
+        className={cn('mb-4 transition-colors', {
+          'border-2 border-destructive bg-destructive/5': isOverdue,
+          'hover:border-destructive/50': isOverdue,
+        })}
+      >
         <CardContent className='p-4'>
           <h3 className='mb-2 text-lg font-semibold'>{task.title}</h3>
           <p className='mb-2 text-gray-600'>{task.description}</p>
           <div className='flex items-center justify-between'>
-            <Badge variant={task.status === 'completed' ? 'success' : 'default'}>
+            <Badge
+              variant={
+                task.status === 'completed' ? 'success' : isOverdue ? 'destructive' : 'default'
+              }
+            >
               {task.status}
             </Badge>
             {task.dueDate && (
-              <span className={`text-sm ${isOverdue ? 'text-red-500' : 'text-gray-500'}`}>
-                Due: {format(new Date(task.dueDate), 'PP')}
-              </span>
+              <div className='flex items-center gap-2'>
+                <span
+                  className={cn('text-sm', {
+                    'font-medium text-destructive': isOverdue,
+                    'text-muted-foreground': !isOverdue,
+                  })}
+                >
+                  Due: {format(new Date(task.dueDate), 'PP')}
+                </span>
+                {isOverdue && (
+                  <Badge variant='destructive' className='animate-pulse'>
+                    Overdue
+                  </Badge>
+                )}
+              </div>
             )}
           </div>
         </CardContent>

@@ -1,5 +1,5 @@
 import { FilterType, taskStore } from '@/features/task/stores'
-import { TaskStatus, taskSchema } from '@/lib/schemas/entities'
+import { Task, TaskStatus, taskSchema } from '@/lib/schemas/entities'
 
 type TaskInput = {
   title: string
@@ -63,5 +63,10 @@ export const taskService = {
     const store = taskStore.getState()
     store.setTaskStatus(id, status)
     return store.getTaskById(id)
+  },
+
+  isTaskOverdue: (task: Task) => {
+    if (!task.dueDate || task.status === 'completed') return false
+    return new Date() > new Date(task.dueDate)
   },
 }
