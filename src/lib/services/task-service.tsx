@@ -1,3 +1,4 @@
+import { isPast } from 'date-fns'
 import { FilterType, taskStore } from '@/features/task/stores'
 import { Task, TaskStatus, taskSchema } from '@/lib/schemas/entities'
 
@@ -67,6 +68,8 @@ export const taskService = {
 
   isTaskOverdue: (task: Task) => {
     if (!task.dueDate || task.status === 'completed') return false
-    return new Date() > new Date(task.dueDate)
+    const dueDate = new Date(task.dueDate)
+    const today = new Date()
+    return dueDate.getDate() !== today.getDate() && isPast(dueDate)
   },
 }
